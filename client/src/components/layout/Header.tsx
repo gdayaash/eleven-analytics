@@ -12,6 +12,7 @@ function Header() {
   function handleDatePicker(prev:boolean){
     console.log(prev)
     setOpen(prev=> !prev)
+
 }
   
   return (
@@ -31,11 +32,13 @@ function Header() {
           </ul>
         </div>
         <div className="eleven-header__actions">
-          <ul className="eleven-header__actions-items">
+          <ul className="eleven-header__actions-items flex items-center gap-x-3">
             <li className="eleven-header-actions-item">
-              <DatePicker handleDatePicker={handleDatePicker} open={open} />
+              <DatePickerBtn handleDatePicker={handleDatePicker} open={open} />
             </li>
-            <li className="eleven-header-actions-item"></li>
+            <li className="eleven-header-actions-item">
+              <ExportBtn />
+            </li>
           </ul>
         </div>
       </nav>
@@ -43,16 +46,17 @@ function Header() {
   );
 }
 
-interface DatePickerProps {
+interface DatePickerBtnProps {
   open: boolean;
   handleDatePicker: (prev: boolean) => void;
 }
 
+function DatePickerBtn({handleDatePicker, open}:DatePickerBtnProps){
+  return <button className='cursor-pointer' onClick={()=> handleDatePicker(open)}>{todayDate}</button>
+}
 
-function DatePicker({handleDatePicker, open}:DatePickerProps){
-  return<>
-  <button className='cursor-pointer' onClick={()=> handleDatePicker(open)}>{todayDate}</button>
-  </>
+function ExportBtn(){
+  return <button className='cursor-pointer' onClick={()=> console.log("Export Btn Clicked")}>Export Report</button>
 }
 
 export default Header;
