@@ -1,5 +1,9 @@
 import {format} from 'date-fns';
 import { useState } from 'react';
+import { Bell, CircleUser, Calendar, ChevronDown } from "lucide-react";
+// import DatePicker from '@/components/ui/DatePicker';
+
+
 
 const today = new Date();
 
@@ -16,8 +20,8 @@ function Header() {
 }
   
   return (
-    <header className="eleven-header px-2 py-4">
-      <nav className="eleven-header__nav flex items-center gap-x-2">
+    <header className="eleven-header px-2 py-4 w-max">
+      <nav className="eleven-header__nav flex items-center gap-x-5">
         <div className="eleven-header__client">
           <div className="eleven-header__client-name">
             <span className="eleven-header__client-name-text border-[1.5px] border-solid border-gray-300 rounded-sm py-1 px-1.5 bg-transparent m-2">--Client--Name--</span>
@@ -39,6 +43,10 @@ function Header() {
             <li className="eleven-header-actions-item">
               <ExportBtn />
             </li>
+            <li className="eleven-header-actions-item flex items-center gap-x-2">
+              <Bell size={18} />
+              <CircleUser className='cursor-pointer' size={20}/>
+            </li>
           </ul>
         </div>
       </nav>
@@ -52,11 +60,18 @@ interface DatePickerBtnProps {
 }
 
 function DatePickerBtn({handleDatePicker, open}:DatePickerBtnProps){
-  return <button className='cursor-pointer' onClick={()=> handleDatePicker(open)}>{todayDate}</button>
+  return(
+    <span className='cursor-pointer flex items-center gap-x-1' onClick={()=> handleDatePicker(open)}>
+    <Calendar size={15}/>
+    {todayDate}
+    <ChevronDown size={14} />
+  </span>
+  )
 }
 
 function ExportBtn(){
   return <button className='cursor-pointer' onClick={()=> console.log("Export Btn Clicked")}>Export Report</button>
 }
+
 
 export default Header;
