@@ -23,7 +23,7 @@ function Header() {
     <header className="eleven-header px-2 py-4 w-max">
       <nav className="eleven-header__nav flex items-center gap-x-5">
         <div className="eleven-header__client">
-          <div className="eleven-header__client-name">
+          <div className="eleven-header__client-name flex items-center">
             <span className="eleven-header__client-name-text border-[1.5px] border-solid border-gray-300 rounded-sm py-1 px-1.5 bg-transparent m-2">--Client--Name--</span>
             <span className="text-[24px]">|</span>
           </div>
@@ -61,7 +61,7 @@ interface DatePickerBtnProps {
 
 function DatePickerBtn({handleDatePicker, open}:DatePickerBtnProps){
   return(
-    <span className='cursor-pointer flex items-center gap-x-1' onClick={()=> handleDatePicker(open)}>
+    <span className='cursor-pointer flex items-center gap-x-1 border-[2px] border-dotted border-gray-600 px-1.5' onClick={()=> handleDatePicker(open)}>
     <Calendar size={15}/>
     {todayDate}
     <ChevronDown size={14} />
